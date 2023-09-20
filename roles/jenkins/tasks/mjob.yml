@@ -1,4 +1,4 @@
-- name: Copy Config File
+- name: Copy Config File - {{ item.job_name }}
   ansible.builtin.template:
     src: mjob.xml
     dest: /tmp/mjob.xml
@@ -6,7 +6,7 @@
 - name: Create Job - {{ item.job_name }}
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/mjob.xml') }}"
-    name: {{ item.job_name }}
+    name: "{{ item.folder_name }}/{{ item.job_name }}"
     password: admin123
     url: http://54.85.69.49:8080/
     user: Manasa Reddy
