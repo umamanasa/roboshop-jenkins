@@ -3,24 +3,32 @@ def call() {
     node('workstation') {
 
         sh "find . | sed -e '1d' |xargs rm -rf "
-        stage('Compile Code') {
-           common.compile()
+
+        if (env.TAG_NAME ==~ ".*") {
+            env.branch_name = "refs/tags/${env.TAG_NAME}"
+        } else {
+            env.branch_name = "${env.BRANCH_NAME}"
+        }
+        checkout scmGit(
+                branches: [[name: branch_name]],
+                userremoteconfigs: [[url: "https://github.com/umamanasa/${component}"]]
+        )
+
+        if (env.TAG_NAME ==~ ".*") {
+            common.compile()
+            common.release()
+        } else {
+            if (env.BRANCH_NAME == "main") {
+                common.compile()
+                common.test()
+                common.codeQuality()
+                common.codeSecurity()
+            } else {
+                common.compile()
+                common.test()
+                common.codeQuality()
+            }
         }
 
-        stage('Test') {
-            print 'Hello'
-        }
-
-        stage('Code Quality') {
-            print 'Hello'
-        }
-
-        stage('Code Security') {
-            print 'Hello'
-        }
-
-        stage('Release') {
-            print 'Hello'
-        }
     }
 }

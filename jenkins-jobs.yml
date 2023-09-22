@@ -8,10 +8,10 @@
       - { folder_name: "Infra-Jobs" }
     mjobs:
       - { job_name: "cart", repo_name: "https://github.com/umamanasa/cart", folder_name: "CI-Pipelines" }
-      - { job_name: "catalogue", repo_name: "https://github.com/umamanasa/cart", folder_name: "CI-Pipelines" }
-      - { job_name: "user", repo_name: "https://github.com/umamanasa/cart", folder_name: "CI-Pipelines" }
-      - { job_name: "shipping", repo_name: "https://github.com/umamanasa/cart", folder_name: "CI-Pipelines" }
-      - { job_name: "payment", repo_name: "https://github.com/umamanasa/cart", folder_name: "CI-Pipelines" }
-      - { job_name: "frontend", repo_name: "https://github.com/umamanasa/cart", folder_name: "CI-Pipelines" }
+      - { job_name: "catalogue", repo_name: "https://github.com/umamanasa/catalogue", folder_name: "CI-Pipelines" }
+      - { job_name: "user", repo_name: "https://github.com/umamanasa/user", folder_name: "CI-Pipelines" }
+      - { job_name: "shipping", repo_name: "https://github.com/umamanasa/shipping", folder_name: "CI-Pipelines" }
+      - { job_name: "payment", repo_name: "https://github.com/umamanasa/payment", folder_name: "CI-Pipelines" }
+      - { job_name: "frontend", repo_name: "https://github.com/umamanasa/frontend", folder_name: "CI-Pipelines" }
     sjobs:
       - { job_name: "roboshop-terraform", repo_name: "https://github.com/umamanasa/roboshop-terraform", folder_name: "Infra-Jobs" }
