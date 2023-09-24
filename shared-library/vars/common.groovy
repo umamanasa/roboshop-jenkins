@@ -34,7 +34,13 @@ def codeQuality() {
     env.sonaruser = sh (script: 'aws ssm get-parameter --name "sonarqube.user" --with-decryption --query="Parameter.Value" |xargs', returnStdout: true).trim()
     env.sonarpass = sh (script: 'aws ssm get-parameter --name "sonarqube.pass" --with-decryption --query="Parameter.Value" |xargs', returnStdout: true).trim()
     wrap([$class: "MaskPasswordsBuildWrapper", varPasswordPairs: [[password: sonarpass]]]) {
-      sh 'sonar-scanner -Dsonar.host.url=http://172.31.23.83:9000 -Dsonar.login=${sonaruser} -Dsonar.password=${sonarpass} -Dsonar.projectKey=${component} -Dsonar.qualitygate.wait=true'
+
+      if(env.codeType == "maven"){
+        sh 'sonar-scanner -Dsonar.host.url=http://172.31.23.83:9000 -Dsonar.login=${sonaruser} -Dsonar.password=${sonarpass} -Dsonar.projectKey=${component} -Dsonar.qualitygate.wait=true -Dsonar.javabinaries=./target'
+
+      } else {
+        sh 'sonar-scanner -Dsonar.host.url=http://172.31.23.83:9000 -Dsonar.login=${sonaruser} -Dsonar.password=${sonarpass} -Dsonar.projectKey=${component} -Dsonar.qualitygate.wait=true'
+      }
     }
   }
 }
@@ -42,6 +48,9 @@ def codeQuality() {
 def CodeSecurity() {
   stage('Code Security') {
     print 'Code Security'
+
+    // In Code Security we will generally use SAST & SCA Checks (CHECK MARX TOOL FOR CODE SECURITY)
+    // You can say that your company is using checkmarxSAST and checkmarx SCA for code security
   }
 }
 
