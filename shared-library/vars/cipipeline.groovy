@@ -29,6 +29,5 @@ def call() {
                 common.codeQuality()
             }
         }
-
     }
 }
