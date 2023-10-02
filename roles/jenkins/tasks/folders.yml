@@ -9,4 +9,4 @@
     name: "{{ item.folder_name }}"
     password: admin123
     url: http://172.31.31.195:8080
-    user: Manasa Reddy
+    user: jenkins

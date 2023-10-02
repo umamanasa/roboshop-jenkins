@@ -8,7 +8,7 @@
       - { folder_name: "Infra-Jobs" }
       - { folder_name: "Deployment-Jobs" }
     mjobs:
-      - { job_name: "cart", repo_name: "https://github.com/umamanasa/cart.git", folder_name: "CI-Pipelines" }
+      - { job_name: "cart", repo_name: "https://github.com/umamanasa/cart", folder_name: "CI-Pipelines" }
       - { job_name: "catalogue", repo_name: "https://github.com/umamanasa/catalogue", folder_name: "CI-Pipelines" }
       - { job_name: "user", repo_name: "https://github.com/umamanasa/user", folder_name: "CI-Pipelines" }
       - { job_name: "shipping", repo_name: "https://github.com/umamanasa/shipping", folder_name: "CI-Pipelines" }
