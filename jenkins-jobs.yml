@@ -17,3 +17,4 @@
     sjobs:
       - { job_name: "roboshop-terraform", repo_name: "https://github.com/umamanasa/roboshop-terraform", folder_name: "Infra-Jobs" }
       - { job_name: "App-Deployment", repo_name: "https://github.com/umamanasa/roboshop-ansible", folder_name: "Deployment-Jobs" }
+      - { job_name: "Helm-Deployment", repo_name: "https://github.com/umamanasa/roboshop-helm1", folder_name: "Deployment-Jobs" }
