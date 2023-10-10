@@ -54,6 +54,7 @@ def CodeSecurity() {
   }
 }
 
+//This is for NEXUS
 def release() {
   stage('Release') {
     env.nexususer = sh(script: 'aws ssm get-parameter --name "nexus.username" --with-decryption --query="Parameter.Value" |xargs', returnStdout: true).trim()
@@ -73,3 +74,14 @@ def release() {
     }
   }
 }
+
+//This is for AWS ECR
+//def release() {
+//  stage('Release') {
+//    sh '''
+//       aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 206243364202.dkr.ecr.us-east-1.amazonaws.com
+//       docker build -t 206243364202.dkr.ecr.us-east-1.amazonaws.com/${component}:${TAG_NAME} .
+//       docker push 206243364202.dkr.ecr.us-east-1.amazonaws.com/${component}:${TAG_NAME}
+//'''
+//  }
+//}
